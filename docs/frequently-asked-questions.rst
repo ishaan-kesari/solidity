@@ -9,24 +9,11 @@ This list was originally compiled by `fivedogit <mailto:fivedogit@gmail.com>`_.
 Basic Questions
 ***************
 
-Is it possible to do something on a specific block number? (e.g. publish a contract or execute a transaction)
-=============================================================================================================
-
-Transactions are not guaranteed to happen on the next block or any future
-specific block, since it is up to the miners to include transactions and not up
-to the submitter of the transaction. This applies to function calls/transactions and contract
-creation transactions.
-
-If you want to schedule future calls of your contract, you can use the
-`alarm clock <http://www.ethereum-alarm-clock.com/>`_.
-
 What is the transaction "payload"?
 ==================================
 
 This is just the bytecode "data" sent along with the request.
 
-Create a contract that can be killed and return funds
-=====================================================
 
 First, a word of warning: Killing contracts sounds like a good idea, because "cleaning up"
 is always good, but as seen above, it does not really clean up. Furthermore,
@@ -47,6 +34,21 @@ has it (which includes `Remix <https://remix.ethereum.org/>`_), then
 ``kill()`` is taken care of for you. Once a contract is "mortal", then you can
 ``contractname.kill.sendTransaction({from:eth.coinbase})``, just the same as my
 examples.
+=======
+Is there a decompiler available?
+================================
+
+There is no exact decompiler to Solidity, but
+`Porosity <https://github.com/comaeio/porosity>`_ is close.
+Because some information like variable names, comments, and
+source code formatting is lost in the compilation process,
+it is not possible to completely recover the original source code.
+
+Bytecode can be disassembled to opcodes, a service that is provided by
+several blockchain explorers.
+
+Contracts on the blockchain should have their original source
+code published if they are to be used by third parties.
 
 Can you return an array or a ``string`` from a solidity function call?
 ======================================================================
@@ -167,11 +169,6 @@ arguments for you.
 See `ping.sol <https://github.com/fivedogit/solidity-baby-steps/blob/master/contracts/45_ping.sol>`_ and
 `pong.sol <https://github.com/fivedogit/solidity-baby-steps/blob/master/contracts/45_pong.sol>`_.
 
-Is unused gas automatically refunded?
-=====================================
-
-Yes and it is immediate, i.e. done as part of the transaction.
-
 When returning a value of say ``uint`` type, is it possible to return an ``undefined`` or "null"-like value?
 ============================================================================================================
 
@@ -232,8 +229,6 @@ block explorer do not show Ether sent between contracts correctly.
 What is the ``memory`` keyword? What does it do?
 ================================================
 
-The Ethereum Virtual Machine has three areas where it can store items.
-
 The first is "storage", where all the contract state variables reside.
 Every contract has its own storage and it is persistent between function calls
 and quite expensive to use.
@@ -243,9 +238,6 @@ is erased between (external) function calls and is cheaper to use.
 
 The third one is the stack, which is used to hold small local variables.
 It is almost free to use, but can only hold a limited amount of values.
-
-For almost all types, you cannot specify where they should be stored, because
-they are copied every time they are used.
 
 The types where the so-called storage location is important are structs
 and arrays. If you e.g. pass such variables in function calls, their
