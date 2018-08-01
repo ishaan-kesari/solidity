@@ -1,15 +1,18 @@
+---
+name: General Feedback
+about: Any general feedback (neither feature request nor bug reports)
+---
+
 ## Prerequisites
 
-- We realize there is a lot of data requested here. We ask only that you do your best to provide as much information as possible so we can better help you.
+- First, many thanks for taking part in the community. We really appreciate that.
 - Read the [contributing guidelines](http://solidity.readthedocs.io/en/latest/contributing.html).
 - Support questions are better asked in one of the following locations:
 	- [Solidity chat](https://gitter.im/ethereum/solidity)
 	- [Stack Overflow](https://ethereum.stackexchange.com/)
 - Ensure the issue isn't already reported.
-- Should be reproducible with the latest ``solc`` version.
 
 *Delete the above section and the instructions in the sections below before submitting*
-
 
 ## Description
 
@@ -37,3 +40,4 @@ For bug reports, please provide as much *relevant* info as possible.
 - Framework (i.e. Truffle)
 - IDE (i.e. Remix)
 - Operating system
+
