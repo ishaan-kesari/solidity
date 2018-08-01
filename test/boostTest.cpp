@@ -155,8 +155,6 @@ test_suite* init_unit_test_suite( int /*argc*/, char* /*argv*/[] )
 		})
 			removeTestSuite(suite);
 	}
-	if (dev::test::Options::get().disableSMT)
-		removeTestSuite("SMTChecker");
 
 	return 0;
 }
